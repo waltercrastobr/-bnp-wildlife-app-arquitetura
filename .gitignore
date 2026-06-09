@@ -1,0 +1,14 @@
+# PDFs de referência (arquivos grandes, não versionados)
+00_referencias/*.pdf
+
+# Imagens (opcional — descomente se quiser versionar as fotos dos diagramas)
+# 02_implementacao/diagramas/fotos/*.png
+
+# Sistema operacional
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Editor
+.vscode/
+*.swp

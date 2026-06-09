@@ -1,0 +1,114 @@
+Colaboração com foco no design
+Os assistentes de codificação por IA tendem a gerar a implementação imediatamente, incorporando as decisões de design de forma invisível no resultado. Proponho um padrão de conversa estruturada que espelha o uso de um quadro branco com um profissional: níveis progressivos de alinhamento de design antes de qualquer código, reduzindo a carga cognitiva e identificando mal-entendidos no momento mais oportuno.
+
+03 de março de 2026
+
+Foto de Rahul Garg
+Rahul Garg
+Rahul é Engenheiro Principal na Thoughtworks, em Gurgaon, Índia. Ele é apaixonado pela arte de construir software de fácil manutenção por meio de DDD e Arquitetura Limpa, e explora como a IA pode ajudar as equipes a alcançar a excelência em engenharia.
+
+IA generativa
+
+Este artigo faz parte de uma série:
+
+Padrões para reduzir o atrito no desenvolvimento assistido por IA
+
+Conteúdo
+O Custo do Design Invisível
+Reconstruindo o quadro branco
+Como isso se traduz na prática
+Disciplina e Calibração
+Conclusão
+Barras laterais
+Este padrão em treliça
+Quando programo em dupla com um colega em algo complexo, não começamos no teclado. Vamos para o quadro branco. Esboçamos componentes, debatemos o fluxo de dados, discutimos limites. Alinhamos o que o sistema precisa fazer antes de discutir como construí-lo. Somente após esse alinhamento — às vezes rápido, às vezes mais longo — sentamos e escrevemos o código. O uso do quadro branco não é supérfluo. É onde o pensamento real acontece e é o que torna o código subsequente correto. O princípio é simples: quadro branco antes do teclado .
+
+Com assistentes de programação por IA, esse princípio desaparece completamente. A velocidade é sedutora: descreva uma funcionalidade e receba centenas de linhas de implementação em segundos. A IA pode entender perfeitamente o requisito — um serviço de notificação por e-mail com lógica de repetição, por exemplo. Mas entender o que construir e colaborar em como construí-lo são duas atividades diferentes, e a IA as funde em uma só. Ela não para para discutir quais componentes criar, se deve usar a infraestrutura existente ou introduzir novas abstrações, ou como as interfaces devem ser. Ela salta do requisito para a implementação, tomando cada decisão de design técnico silenciosamente ao longo do processo.
+
+Cheguei a chamar isso de "Armadilha da Implementação". A IA produz resultados tangíveis tão rapidamente que o ponto de verificação natural entre pensar no design e escrever o código desaparece. O resultado não é apenas um código desalinhado. É o fardo cognitivo de desvendar decisões de design sobre as quais nunca fui consultado, agrupadas em uma implementação que agora preciso revisar linha por linha.
+
+O Custo do Design Invisível
+A armadilha da implementação não se resume ao fato de a IA ignorar o design. Em um sentido significativo, a IA toma decisões de design ao gerar código — sobre escopo, limites de componentes, fluxo de dados, interfaces e tratamento de erros. Mas essas decisões chegam silenciosamente, incorporadas à implementação. Não há um momento em que eu possa dizer "espere, já temos um sistema de filas" ou "essa interface não funcionará com nossos serviços existentes". A primeira vez que vejo o raciocínio de design da IA ​​é quando estou lendo o código, que é o momento mais custoso e cognitivamente exigente para descobrir uma discrepância.
+
+Acredito que seja por isso que revisar código gerado por IA parece muito mais exaustivo do que revisar o trabalho de um colega. Quando uma dupla humana submete o código após uma sessão de brainstorming, estou revisando a implementação em relação a um projeto que já entendo e com o qual concordei. Quando a IA gera código a partir de um único comando, estou avaliando simultaneamente o escopo (construiu o que eu precisava?), a arquitetura (os limites dos componentes estão corretos?), a integração (se encaixa na nossa infraestrutura existente?), os contratos (as interfaces estão corretas?) e a qualidade do código (a implementação está limpa?) — tudo ao mesmo tempo, tudo interligado.
+
+São muitas dimensões de julgamento para uma única análise. O cérebro não foi feito para isso. Algumas coisas passam despercebidas — não por descuido, mas por sobrecarga.
+
+Engenheiros de software compreendem esse princípio desde a década de 1980. A Curva de Custo da Mudança de Barry Boehm demonstrou que corrigir um mal-entendido nos requisitos durante a fase de projeto custa uma fração do que corrigi-lo na implementação — e ordens de magnitude menor do que corrigi-lo em produção. A mesma lógica econômica se aplica à colaboração em IA: detectar uma discrepância de escopo em uma conversa de projeto de dois minutos é fundamentalmente mais barato do que descobri-la em meio a 400 linhas de código gerado.
+
+Existe um custo adicional que é fácil de ignorar. A IA tende a adicionar funcionalidades. Uma solicitação para um serviço de notificação pode retornar código com limitação de taxa, ganchos de análise e um sistema de webhook — nenhum dos quais foi solicitado. Isso não é apenas expansão de escopo; é o que eu chamaria de injeção de dívida técnica . Cada adição não solicitada é código que eu não pedi, mas que preciso revisar; testes que eu não planejei, mas que preciso escrever; área de superfície que eu não precisava, mas que preciso manter. E como chega com uma aparência limpa e razoável, é fácil aceitar sem questionar se pertence ao projeto. A carga cognitiva do processo de revisão aumenta, porque agora estou avaliando código que resolve problemas sobre os quais eu nunca perguntei.
+
+Reconstruindo o quadro branco
+A solução, acredito, é reconstruir a conversa em quadro branco que as duplas humanas fazem naturalmente — tornando o pensamento de design implícito da IA ​​explícito e colaborativo. Em vez de pedir a implementação diretamente, eu exploro níveis progressivos de design. Cada nível revela uma categoria de decisões que, de outra forma, ficariam ocultas no código gerado.
+
+Utilizo cinco níveis, ordenados do abstrato ao concreto:
+
+Funcionalidades — O que este sistema precisa fazer? Apenas os requisitos básicos, sem detalhes de implementação.
+Componentes — Quais são os elementos básicos? Serviços, módulos, abstrações principais.
+Interações — Como os componentes se comunicam? Fluxo de dados, chamadas de API, eventos.
+Contratos — O que são as interfaces? Assinaturas de funções, tipos, esquemas.
+Implementação — Agora escreva o código.
+A principal restrição: nenhum código deve ser publicado até que o Nível 5 seja aprovado.
+
+Essa simples regra muda a dinâmica da colaboração. Cada nível se torna um ponto de verificação — um lugar onde posso concordar, discordar ou redirecionar antes mesmo de qualquer código existir. O Nível 1 serve como uma verificação de vocabulário compartilhado — confirmando que a IA e eu estamos falando sobre a mesma funcionalidade, com o mesmo escopo, antes de qualquer projeto começar. O valor mais profundo começa no Nível 2, onde a verdadeira conversa sobre o projeto técnico se desenrola: limites dos componentes, depois padrões de interação e, por fim, contratos. Em cada nível, estou pensando em uma categoria de decisão, não em todas ao mesmo tempo. Isso é gerenciamento de carga cognitiva — o cérebro nunca está lidando com tudo simultaneamente. E como humanos e IA se alinham em cada etapa, um modelo mental compartilhado é construído incrementalmente, assim como acontece em um quadro branco.
+
+É assim que duplas humanas eficazes trabalham. Em um quadro branco, um colega não propõe uma implementação completa de uma só vez. Ele esboça um quadro, explica o que ele faz, aguarda feedback e, em seguida, esboça o próximo quadro. O modelo mental compartilhado se constrói incrementalmente. A abordagem Design-First aplica a mesma disciplina à colaboração em IA: uma conversa sequencial onde o alinhamento se constrói passo a passo e onde cada passo restringe o espaço de decisão para o próximo.
+
+Sem essa estrutura, a IA não é realmente uma dupla — é como um colega que se isolou em uma sala separada, tomou todas as decisões sozinho e voltou com o código finalizado. A abordagem Design-First torna a colaboração real. Tanto o humano quanto a IA examinam cada camada do projeto juntos e, quando a implementação começa, existe um entendimento genuíno e compartilhado do que está sendo construído e por quê.
+
+Como isso se traduz na prática
+Recentemente, ao desenvolver um serviço de notificações, essa abordagem provou seu valor quase que imediatamente.
+
+Cheguei à conversa com um contexto claro: o escopo da funcionalidade definido em nossa história — entrega exclusiva por e-mail para a v1, com lógica de repetição e rastreamento básico de status — e a pilha de tecnologias do projeto, incluindo o BullMQ para processamento de tarefas. No nível de Capacidades, compartilhei esse escopo antecipadamente e pedi à equipe de IA que confirmasse seu entendimento antes de iniciarmos qualquer projeto. Uma verificação rápida, porém importante: garantiu que estivéssemos falando a mesma língua sobre o que estava sendo construído e o que estava explicitamente fora do escopo.
+
+A verdadeira discussão sobre o design começou no nível dos componentes. A IA propôs cinco componentes, incluindo uma RetryQueueabstração dedicada que envolvia o BullMQ. Arquiteturalmente limpo no papel — mas desnecessário. O mecanismo de repetição integrado do BullMQ com backoff exponencial lida com isso nativamente, e uma abstração adicional adicionaria indireção sem valor agregado. Eu argumentei: usar o BullMQ diretamente, sem wrapper. A IA simplificou a estrutura de componentes. Não se tratava de uma lacuna de contexto — a IA conhecia o BullMQ pelo contexto do projeto que eu havia compartilhado. Era uma discordância genuína sobre o design, a respeito de abstrair ou não a infraestrutura existente, resolvida em segundos porque ainda não havia código.
+
+No nível de interações, essa estrutura de componentes mais simples trouxe um benefício em cascata. Sem a camada de abstração desnecessária, o fluxo de dados tornou-se mais direto: o manipulador enfileira uma tarefa do BullMQ, o trabalhador a processa e as novas tentativas são tratadas nativamente. O design da interação ficou mais limpo e melhor integrado do que qualquer solução que incluísse o wrapper.
+
+É na fase de Contratos que algo particularmente valioso acontece. Depois de concordar com as assinaturas de funções, tipos e interfaces — NotificationPayload, NotificationResult, EmailProvider, DeliveryTracker— eu tinha tudo o que precisava para pedir à IA que escrevesse testes antes de qualquer código de implementação. A conversa sobre design, quase como um efeito colateral, criou as pré-condições para o desenvolvimento orientado a testes (TDD). Aprovar contratos, gerar testes e, em seguida, implementar com base nesses testes. Para equipes que praticam TDD, o Design-First oferece uma porta de entrada natural. Para equipes que não praticam, os contratos ainda servem como uma rede de segurança — uma especificação concreta e revisável que torna os mal-entendidos visíveis antes que se tornem bugs.
+
+Quando a implementação começou no Nível 5, o código estava muito mais alinhado do que qualquer coisa que uma única solicitação pudesse ter produzido. O escopo foi confirmado. A arquitetura se encaixava na infraestrutura existente — não porque a IA foi informada sobre ela no meio da conversa, mas porque debatemos como usá-la no nível de projeto. Os contratos foram definidos e testados. A IA não estava adivinhando — estava implementando um projeto acordado.
+
+Disciplina e Calibração
+Essa abordagem exige uma disciplina que contraria a forma como os assistentes de IA são normalmente usados. A IA é treinada para ser útil, e "útil" geralmente significa produzir resultados tangíveis rapidamente. Sem controle, ela partirá para a implementação. Combinará níveis, oferecendo diagramas de componentes com código já escrito ou propondo contratos com implementações anexadas. A disciplina de dizer "pare — ainda estamos no Nível 2, mostre-me apenas a estrutura de componentes" visa, na verdade, proteger a memória de trabalho de detalhes prematuros. Ela mantém a conversa no nível de abstração adequado para a decisão que está sendo tomada.
+
+Nem todas as tarefas exigem todos os cinco níveis. A estrutura se adapta à complexidade do trabalho:
+
+Complexidade da Tarefa	Comece em	Exemplo
+Utilitário simples	Nível 4 (Contratos)	Formatador de data, auxiliar de string
+Componente único	Nível 2 (Componentes)	Serviço de validação, endpoint da API
+Recurso multicomponente	Nível 1 (Capacidades)	Sistema de notificação, integração de pagamentos
+Nova integração de sistemas	Nível 1 + nível 3 profundo	API de terceiros, pipeline orientado a eventos
+A estrutura é uma ferramenta para gerenciar a complexidade, não um ritual a ser aplicado uniformemente.
+
+A abordagem Design-First também se complementa com o que chamo de Preparação de Conhecimento — compartilhar o contexto selecionado do projeto (pilha de tecnologias, convenções, decisões de arquitetura) com a IA antes de iniciar o trabalho. Quando a IA já entende a arquitetura do projeto, as convenções de nomenclatura e as restrições de versão, cada nível de design já está ancorado à base de código. A discussão sobre as Capacidades reflete os requisitos reais. O nível de Componentes utiliza padrões de nomenclatura existentes. Os Contratos correspondem às convenções de tipo estabelecidas. A Preparação fornece o vocabulário; o Design-First fornece a estrutura. Juntos, eles criam uma conversa onde o alinhamento acontece naturalmente, em vez de por meio de correções constantes.
+
+Na prática, uma única pergunta inicial costuma ser suficiente para dar início a todo o padrão:
+
+Preciso desenvolver [funcionalidade]. Antes de escrever qualquer código, explique-me o projeto:
+
+- Capacidades: [suas restrições de escopo]
+- Componentes: [suas restrições de infraestrutura e arquitetura]
+- Interações: [seus padrões de integração e fluxo de dados]
+- Contratos: [suas convenções de tipo e interface]
+
+Apresente cada nível separadamente. Aguarde minha aprovação antes de passar para o próximo.
+Nenhum código será emitido até que os contratos sejam acordados.
+      
+Essa instrução define a disciplina sequencial — a IA apresentará cada nível, aguardará feedback e suspenderá a execução do código até receber aprovação explícita. Mas o verdadeiro valor está nos parênteses: as restrições específicas do projeto que cada desenvolvedor preenche. “Somente e-mail para a v1.” “Usar a infraestrutura existente do BullMQ.” “Padrões funcionais, sem classes.” “Todas as interfaces devem estar alinhadas com nossas convenções de tipo estabelecidas.” Essas restrições são mantidas em todos os níveis, moldando cada decisão de design sem precisar serem repetidas. A cada ponto de verificação, a conversa se aprofunda — eu adiciono contexto, corrijo suposições e direciono o design com base no que sei sobre a base de código. A instrução inicia o processo; a colaboração em cada nível o molda.
+
+Com o tempo, as equipes que consideram esse padrão valioso geralmente o codificam como uma instrução reutilizável e compartilhável, enriquecendo-o com diretrizes arquitetônicas, expectativas de qualidade e configurações padrão específicas da equipe que se aplicam automaticamente a todas as conversas de design.
+
+Essa abordagem não é isenta de custos. Conversas sobre design levam mais tempo do que solicitar o código imediatamente. Para tarefas triviais, o custo adicional não se justifica. Há também uma curva de aprendizado — desenvolvedores acostumados a digitar um comando e receber o código podem achar a estrutura sequencial estranha no início. A disciplina para mantê-la exige esforço consciente, especialmente quando os prazos são apertados e a tentação de "simplesmente pedir o código" é grande.
+
+Acredito que o investimento compensa principalmente em trabalhos complexos — aqueles em que um mal-entendido custa não minutos, mas horas, em que o alinhamento arquitetônico é importante, em que o código será mantido e ampliado muito depois do término da conversa inicial.
+
+Este padrão em treliça
+O design-firstátomo em Lattice codifica a metodologia de cinco níveis como uma habilidade instalável. A design-blueprintmolécula orquestra um fluxo de trabalho de design completo — carregando o contexto, percorrendo os níveis, persistindo o projeto aprovado — para que a prática sobreviva à pressão dos prazos sem depender da disciplina individual.
+
+Conclusão
+O valor do quadro branco nunca foi o diagrama em si. Era o alinhamento — o entendimento compartilhado que se desenvolve quando duas pessoas pensam juntas sobre um problema, um passo de cada vez. A abordagem Design-First aplica esse princípio à colaboração em IA.
+
+Quando humanos e IA operam no mesmo escopo, com a mesma arquitetura de componentes, o mesmo modelo de interação e os mesmos contratos, a carga cognitiva passa da vigilância exaustiva para o refinamento colaborativo. O papel do desenvolvedor muda de engenharia reversa de decisões de design invisíveis para direcioná-las explicitamente. Acredito que isso seja o que significa, de fato, trabalhar em conjunto com uma IA — não apenas receber seus resultados, mas participar de seu raciocínio.
+
+A versão mais simples de toda essa abordagem consiste em uma única restrição: nenhum código até que o projeto seja aprovado. Todo o resto decorre daí.
