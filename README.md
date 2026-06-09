@@ -1,7 +1,7 @@
 # 🦁 BNP Wildlife App — Arquitetura de Software
 
 > **Disciplina:** Arquitetura de Sistemas | **Professor:** Kiev Gama  
-> **Instituição:** CESAR School  
+> **Instituição:** UFPE 
 > **Grupo:** Walter Monteiro · Claudino Neto · Vinícius Seabra  
 > **Data:** 08/06/2026
 
