@@ -345,12 +345,4 @@ Contudo, como foi um processo ainda muito baseado no uso de IA, acredito que ter
 ### Vinícius Seabra
 *(escreva sua opinião aqui)*
 
----
 
-### Perguntas norteadoras para as opiniões
-1. A abordagem Design-First (5 níveis) mudou a qualidade das decisões tomadas? Por quê?
-2. Quais decisões foram as mais difíceis de tomar? O que o processo de escolher entre opções concretas trouxe de diferente?
-3. A proposta anterior foi gerada pela IA sem nenhuma dessas perguntas — qual o risco disso em um projeto real?
-4. O Location Tracker "invisível" na proposta anterior é um exemplo da "Implementation Trap" do blog? Como vocês enxergam isso?
-5. A separação em 5 níveis progressivos custou mais tempo. Valeu a pena? Em que contextos você usaria isso?
-6. Houve alguma decisão que vocês tomariam diferente agora, olhando para o resultado final?
