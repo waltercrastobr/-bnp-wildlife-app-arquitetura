@@ -321,3 +321,33 @@ Todos os diagramas foram renderizados via **[mermaid.live](https://mermaid.live)
 > Namespaces separados: `bnp-critical` (Emergency Service isolado com PriorityClass e recursos dedicados), `bnp-services` (demais microserviços com réplicas), `bnp-data` (PostgreSQL, MongoDB, Kafka em StatefulSets).
 
 ![Deploy Kubernetes — BNP Wildlife App](../02_implementacao/diagramas/fotos/deploy_kubernetes.png)
+
+---
+
+## 8. Espaço para Opiniões do Grupo
+
+> *Esta seção deve ser preenchida pelos integrantes do grupo com suas próprias palavras. O professor Kiev Gama pediu explicitamente a opinião de vocês — não do LLM.*
+
+### Walter Monteiro
+Eu acredito que a abordagem Design-First (5 níveis) melhorou significativamente a qualidade das decisões, pois o processo de analisar cada nível de forma separada nos obriga a questionar cada decisão, o que evita armadilhas como a “Implementation Trap” vista na proposta anterior. Essa abordagem progressiva garante que as decisões de alto nível sejam tomadas e validadas antes de avançarmos para os detalhes de implementação, resultando em uma arquitetura mais robusta e bem pensada.
+As decisões mais difíceis envolveram o balanceamento entre custo, complexidade e os requisitos críticos do sistema, especialmente no que diz respeito ao isolamento do Emergency Service. O processo de escolher entre múltiplas opções concretas nos ajudou a visualizar as implicações de cada escolha, tornando as decisões mais conscientes e alinhadas com os objetivos do projeto. Isso é fundamental em projetos reais, onde uma decisão mal tomada no início pode ter consequências significativas mais tarde.
+Comparado à proposta anterior, que foi gerada pela IA sem o mesmo nível de questionamento, percebemos que sem essa abordagem estruturada, corremos o risco de ignorar requisitos críticos ou escolher tecnologias baseadas em preferências superficiais em vez de análises cuidadosas. A falta de perguntas norteadoras na proposta anterior poderia levar a uma arquitetura frágil, incapaz de lidar com cenários críticos como emergências ou picos de uso.
+O Location Tracker “invisível” na proposta anterior é um exemplo perfeito da Implementation Trap, onde a arquitetura é projetada com uma solução específica em mente sem considerar alternativas ou os requisitos do problema. Essa abordagem pode levar a um design rígido e difícil de manter.
+A separação em 5 níveis progressivos aumentou o tempo de desenvolvimento, mas o investimento valeu a pena. Em projetos menores, como este, essa abordagem é especialmente útil, pois garante que a arquitetura seja sólida desde o início. Em projetos maiores, essa abordagem se tornaria ainda mais crítica para garantir a qualidade e manutenibilidade do sistema.
+A decisão de separar o Emergency Service em um namespace Kubernetes dedicado com PriorityClass foi uma decisão acertada, garantindo que os recursos críticos estejam isolados e tenham prioridade de execução. No entanto, reconsideraria a forma como os eventos são processados pelo Emergency Service. Embora o isolamento seja crucial, a lógica de dedup e despacho dentro do mesmo serviço pode se tornar complexa. Seria interessante avaliar se um serviço dedicado para coordenação de emergências, com responsabilidades mais claras e isoladas, traria benefícios em termos de manutenibilidade e escalabilidade.
+
+### Claudino Neto
+*(escreva sua opinião aqui)*
+
+### Vinícius Seabra
+*(escreva sua opinião aqui)*
+
+---
+
+### Perguntas norteadoras para as opiniões
+1. A abordagem Design-First (5 níveis) mudou a qualidade das decisões tomadas? Por quê?
+2. Quais decisões foram as mais difíceis de tomar? O que o processo de escolher entre opções concretas trouxe de diferente?
+3. A proposta anterior foi gerada pela IA sem nenhuma dessas perguntas — qual o risco disso em um projeto real?
+4. O Location Tracker "invisível" na proposta anterior é um exemplo da "Implementation Trap" do blog? Como vocês enxergam isso?
+5. A separação em 5 níveis progressivos custou mais tempo. Valeu a pena? Em que contextos você usaria isso?
+6. Houve alguma decisão que vocês tomariam diferente agora, olhando para o resultado final?
