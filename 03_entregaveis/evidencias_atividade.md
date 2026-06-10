@@ -333,9 +333,11 @@ Eu acredito que a abordagem Design-First (5 níveis) melhorou significativamente
 
  O processo de escolher entre múltiplas opções concretas nos ajudou a visualizar as implicações de cada escolha, tornando as decisões mais conscientes e alinhadas com os objetivos do projeto. Isso é fundamental em projetos reais, onde uma decisão mal tomada no início pode ter consequências significativas mais tarde.
 
-Comparado à proposta anterior, que foi gerada pela IA sem o mesmo nível de questionamento, percebemos que sem essa abordagem estruturada, corremos o risco de ignorar requisitos críticos ou escolher tecnologias baseadas em preferências superficiais em vez de análises cuidadosas. A falta de perguntas norteadoras na proposta anterior poderia levar a uma arquitetura frágil, incapaz de lidar com cenários críticos como emergências ou picos de uso.
+Comparado à proposta anterior, que foi gerada pela IA sem o mesmo nível de questionamento, percebo que sem essa abordagem estruturada, corremos o risco de ignorar requisitos críticos ou escolher tecnologias baseadas em preferências superficiais em vez de análises cuidadosas. A falta de perguntas norteadoras na proposta anterior poderia levar a uma arquitetura frágil, incapaz de lidar com cenários críticos como emergências ou picos de uso.
 
 A separação em 5 níveis progressivos aumentou o tempo de desenvolvimento, mas o investimento valeu a pena. Em projetos menores, como este, essa abordagem é especialmente útil, pois garante que a arquitetura seja sólida desde o início. Em projetos maiores, essa abordagem se tornaria ainda mais crítica para garantir a qualidade e manutenibilidade do sistema.
+
+Contudo, como foi um processo ainda muito baseado no uso de IA, acredito que teríamos uma melhor visibilidade da diferença das duas arquiteturas propostas se tivéssemos uma base técnica melhor para avaliar o que foi proposto.
 
 ### Claudino Neto
 *(escreva sua opinião aqui)*
