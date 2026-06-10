@@ -330,7 +330,8 @@ Todos os diagramas foram renderizados via **[mermaid.live](https://mermaid.live)
 
 ### Walter Monteiro
 Eu acredito que a abordagem Design-First (5 níveis) melhorou significativamente a qualidade das decisões, pois o processo de analisar cada nível de forma separada nos obriga a questionar cada decisão, o que evita armadilhas como a “Implementation Trap” vista na proposta anterior. Essa abordagem progressiva garante que as decisões de alto nível sejam tomadas e validadas antes de avançarmos para os detalhes de implementação, resultando em uma arquitetura mais robusta e bem pensada.
-As decisões mais difíceis envolveram o balanceamento entre custo, complexidade e os requisitos críticos do sistema, especialmente no que diz respeito ao isolamento do Emergency Service. O processo de escolher entre múltiplas opções concretas nos ajudou a visualizar as implicações de cada escolha, tornando as decisões mais conscientes e alinhadas com os objetivos do projeto. Isso é fundamental em projetos reais, onde uma decisão mal tomada no início pode ter consequências significativas mais tarde.
+
+ O processo de escolher entre múltiplas opções concretas nos ajudou a visualizar as implicações de cada escolha, tornando as decisões mais conscientes e alinhadas com os objetivos do projeto. Isso é fundamental em projetos reais, onde uma decisão mal tomada no início pode ter consequências significativas mais tarde.
 
 Comparado à proposta anterior, que foi gerada pela IA sem o mesmo nível de questionamento, percebemos que sem essa abordagem estruturada, corremos o risco de ignorar requisitos críticos ou escolher tecnologias baseadas em preferências superficiais em vez de análises cuidadosas. A falta de perguntas norteadoras na proposta anterior poderia levar a uma arquitetura frágil, incapaz de lidar com cenários críticos como emergências ou picos de uso.
 
