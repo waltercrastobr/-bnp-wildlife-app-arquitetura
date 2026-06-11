@@ -339,17 +339,27 @@ A separação em 5 níveis progressivos aumentou o tempo de desenvolvimento, mas
 
 Contudo, como foi um processo ainda muito baseado no uso de IA, acredito que teríamos uma melhor visibilidade da diferença das duas arquiteturas propostas se tivéssemos uma base técnica melhor para avaliar o que foi proposto.
 
-### Claudino Neto
-*(escreva sua opinião aqui)*
 
-### Vinícius Seabra
+### Claudino Neto
+
+A abordagem Design-First melhorou muito a qualidade das decisões. O processo nos levou a explicitar premissas e responsabilidades, como quem produz e consome as posições GPS, e a formalizar contratos e ADRs que tornam a implementação mais segura e menos sujeita a suposições.
+
+As escolhas mais difíceis foram as de infraestrutura, como a seleção do barramento de eventos e da estratégia de bancos, e a definição do isolamento do Emergency Service. Discutir opções concretas nos forçou a avaliar trade-offs de operação, retenção de dados e consistência, o que tornou as decisões mais justificáveis para quem vai implementar o sistema.
+
+A proposta anterior, gerada rapidamente por IA, mostra o risco de aceitar soluções sem perguntar quem é responsável por cada parte. Esse tipo de omissão pode gerar inconsistências e retrabalho, como o caso do Location Tracker que não tinha um produtor claro dos dados.
+
+O Location Tracker invisível é um exemplo claro do problema apontado no blog sobre a armadilha da implementação. Ao explicitar o serviço e seu contrato, por exemplo com um endpoint para envio de lotes de GPS, eliminamos a ambiguidade e definimos proprietários e fluxos claros.
+
+Embora o processo de cinco níveis tenha consumido mais tempo, para um sistema com requisitos operacionais e de segurança como este eu considero que valeu a pena. Para protótipos rápidos eu reduziria o rigor, mas para sistemas críticos, distribuídos ou com múltiplos stakeholders, manteria o Design-First.
+
+Se fosse para ajustar algo agora, eu avaliaria não começar imediatamente com Kafka quando o time for pequeno, optando possivelmente por um broker gerenciado ou solução mais simples no início. Também consideraríamos uma abordagem cross-platform dependendo da capacidade da equipe mobile. No geral, as decisões tomadas parecem bem alinhadas com os requisitos levantados.
+
+
 ### Vinícius Seabra
 
 Na minha opinião, a abordagem Design-First ajudou bastante a melhorar a proposta final. Quando começamos a analisar o sistema por etapas, ficou mais fácil perceber alguns pontos que não estavam tão claros na versão anterior. Isso fez com que as decisões fossem tomadas de forma mais consciente, em vez de simplesmente aceitar a primeira solução proposta.
 
 Também achei interessante a arquitetura definida para o sistema. A separação em diferentes serviços deixou as responsabilidades mais organizadas e facilitou entender como cada parte contribui para o funcionamento da aplicação. O uso de uma arquitetura orientada a eventos em algumas funcionalidades, utilizando Kafka para a comunicação entre serviços, me pareceu uma boa escolha principalmente para lidar com notificações e situações de emergência sem criar um acoplamento muito grande entre os componentes.
-
-Além disso, achei válido o uso combinado de tecnologias como PostgreSQL, MongoDB e Redis, já que cada uma foi escolhida para resolver necessidades diferentes do sistema. Mesmo que isso aumente um pouco a complexidade, as justificativas apresentadas mostraram que as decisões não foram tomadas de forma aleatória.
 
 Acredito que o maior risco de gerar uma arquitetura inteira de uma só vez é deixar passar detalhes importantes ou criar componentes que parecem fazer sentido no papel, mas que não funcionam tão bem quando analisamos os fluxos do sistema. O processo em cinco níveis ajudou justamente a identificar esses problemas antes da implementação.
 

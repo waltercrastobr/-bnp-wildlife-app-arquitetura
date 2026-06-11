@@ -92,21 +92,6 @@
 
 ---
 
-## Espaço para Opiniões do Grupo
-
-> *Esta seção deve ser preenchida pelos integrantes do grupo com suas próprias palavras. O professor Kiev Gama pediu explicitamente a opinião de vocês — não do LLM.*
-
-### Walter Monteiro
-*(escreva sua opinião aqui)*
-
-### Claudino Neto
-*(escreva sua opinião aqui)*
-
-### Vinícius Seabra
-*(escreva sua opinião aqui)*
-
----
-
 ### Perguntas norteadoras para as opiniões
 1. A abordagem Design-First (5 níveis) mudou a qualidade das decisões tomadas? Por quê?
 2. Quais decisões foram as mais difíceis de tomar? O que o processo de escolher entre opções concretas trouxe de diferente?

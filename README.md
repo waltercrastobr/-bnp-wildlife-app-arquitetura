@@ -34,16 +34,6 @@ O trabalho foi feito em **colaboração ativa** entre o grupo e a IA: a IA apres
 
 ---
 
-## ⚠️ PENDÊNCIA DO GRUPO
-
-> **Atenção Walter, Claudino e Vinícius:**  
-> O arquivo [`03_entregaveis/comparativo_propostas.md`](03_entregaveis/comparativo_propostas.md) contém a seção de **opiniões individuais de cada membro** que ainda precisa ser preenchida **manualmente, sem uso de IA** — conforme exigido pelo professor.
->
-> Cada um deve escrever sua opinião na seção correspondente do arquivo.  
-> Há 6 perguntas norteadoras no final do documento para guiar os textos.
-
----
-
 ## 📁 Estrutura do Repositório
 
 ```
